@@ -6,7 +6,7 @@ with open(path.join(working_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='PandasHelper',
+    name='PandasHelper.py',
     version='0.0.1',
     scripts=['PandasHelper'],
     url='https://github.com/Gonçalo/PythonProjects',
