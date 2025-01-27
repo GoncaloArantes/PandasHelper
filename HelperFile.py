@@ -552,10 +552,15 @@ class PandasHelper():
     def highest_lowest_correlation(self, columns: list, method: str = 'pearson'):
         r'''Function to get the highest and lowest correlation values with the inputted columns
 
+            Args:
+                columns (list): Columns to study the correlation
+                method (str): Correlation method applied to the dataframe
+                    (default: 'pearson')
+
             Examples of correlation methods:
-                -pearson: Drop all the column's duplicate values;
-                -kendall: Replace all duplicate values with the mean of the column;
-                -spearman: Replace all duplicate values with the median of the column
+                -pearson: Measures linear correlation;
+                -kendall: Measures the ordinal association (degree of similarity);
+                -spearman: Measures similarity using a monotonic function.
         '''
         # Check for valid argument type
         self.__check_type(columns)
@@ -579,7 +584,33 @@ class PandasHelper():
             print(f'{column} has the highest correlation ({max_corr}) with {max_corr_col}!')
 
 
-    #def summary(self):
+    def summary(self):
+        r'''Function to simplify dataframe summary.
+            Prints information about the dataframe (columns, rows, descriptions).
+        '''
+        # Number of rows, columns and the names of the columns
+        cols = list(self.df.columns)
+        print(f'Dataframe has {self.df.index.size} rows/instances and {len(cols)} columns named {cols}!')
+
+        # Description for each column
+        desc = self.df.describe(include='all')
+        idxs_desc = list(desc.index)
+        # Remove count attribute since it does not give us any additional information
+        idxs_desc.remove('count')
+        # Object columns only have 'unique', 'top' and 'freq' in the description
+        obj_idxs_desc = idxs_desc[:3]
+        num_idxs_desc = idxs_desc[3:]
+
+        # Iterate over the columns
+        for column in self.df.columns:
+            print("\n")
+            print(f'Column {column}:')
+            # Check if the column has object type data
+            if self.df[column].dtype == 'O':
+                print("\n".join(f"{idx_desc} = {desc[column][idx_desc]}" for idx_desc in obj_idxs_desc))
+            else:
+                print("\n".join(f"{idx_desc} = {desc[column][idx_desc]}" for idx_desc in num_idxs_desc))
+
 
         # Additional functions I'd like to implement:
 
