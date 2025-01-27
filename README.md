@@ -8,3 +8,9 @@
  Import:
  
  from Automation_Pandas_Library import PandasHelper
+
+ ## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
