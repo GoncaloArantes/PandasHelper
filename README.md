@@ -1,3 +1,6 @@
 # Projects
  My Python Projects
- Update README file
+ 
+ To install the package:
+ 
+ pip install -i https://test.pypi.org/simple/ Automation-Pandas-Library

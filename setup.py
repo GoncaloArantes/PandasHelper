@@ -6,10 +6,9 @@ with open(path.join(working_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='PandasHelper',
+    name='Automation_Pandas_Library',
     version='0.0.1',
-    scripts=['PandasHelper'],
-    url='https://github.com/Gonçalo/PythonProjects',
+    url='https://github.com/Gonçalo/PandasHelper',
     author='Gonçalo Arantes',
     author_email='goncaloarantes18@gmail.com',
     description='Helper for Pandas Dataframe Handling',
