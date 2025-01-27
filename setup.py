@@ -6,8 +6,9 @@ with open(path.join(working_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='pandas_helper',
+    name='PandasHelper',
     version='0.0.1',
+    scripts=['PandasHelper'],
     url='https://github.com/Gonçalo/PythonProjects',
     author='Gonçalo Arantes',
     author_email='goncaloarantes18@gmail.com',
@@ -15,5 +16,10 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=find_packages(),
+    classifiers=[
+            "Programming Language :: Python :: 3",
+            "License :: OSI Approved :: MIT License",
+            "Operating System :: OS Independent"
+    ],
     install_requires=[],
 )

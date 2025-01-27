@@ -318,7 +318,7 @@ class PandasHelper():
         cols_null_values = [col for col in self.df.columns if null_op_count(col) > 0]
 
         # Check ratio of null values for each column to the dataframe's size
-        null_values_ratio_per_col = {col: null_op_count(col)/len(df) for col in cols_null_values}
+        null_values_ratio_per_col = {col: null_op_count(col)/len(self.df) for col in cols_null_values}
 
         # Drop rows if the ratio is smaller than 10% (row_ratio_removal)
         nans_drop_per_col = [col for col in null_values_ratio_per_col.keys() if null_values_ratio_per_col[col] <= row_ratio_removal]
@@ -467,7 +467,7 @@ class PandasHelper():
 
         # Iterate over the columns and correct, if needed, the duplicates
         for index, col in enumerate(cols):
-            condition_values = df.duplicated(subset=col, keep='first')
+            condition_values = self.df.duplicated(subset=col, keep='first')
             
             # Check if there are duplicates
             if self.df[condition_values].empty:
@@ -622,7 +622,7 @@ class PandasHelper():
 
 
 
-
+'''
 dataframe = pd.DataFrame(np.random.randn(5, 5), columns=list('ABCDE'))
 d = pd.Series([1,2,3,4,2], name='integers')
 df = pd.concat([dataframe, d], axis=1)
@@ -630,3 +630,4 @@ print(PandasHelper(dataframe=df).all_functions())
 exit()
 PandasHelper(dataframe=df).dummy_creation(['A','B','integers'])
 PandasHelper(dataframe=dataframe).correlation(['A','B'])
+'''
