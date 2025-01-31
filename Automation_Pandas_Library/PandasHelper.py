@@ -315,7 +315,7 @@ class PandasHelper():
 
         # Check columns with null values
         null_op_count = lambda col: self.df[col].isna().sum()
-        cols_null_values = [col for col in self.df.columns if null_op_count(col) > 0]
+        cols_null_values = [col for col in self.df.columns if null_op_count(col).sum() > 0]
 
         # Check ratio of null values for each column to the dataframe's size
         null_values_ratio_per_col = {col: null_op_count(col)/len(self.df) for col in cols_null_values}
