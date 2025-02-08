@@ -405,7 +405,7 @@ class PandasHelper():
                 if scaler in scalers.keys():
                     scaler = scalers.get(scaler)
                 else:
-                    raise AttributeError('No scaler/Wrong scaler provided. Available scalers => ("standard", "minmax", "maxabs", "robust")')
+                    raise AttributeError(f'No scaler/Wrong scaler provided. Available scalers => {list(scalers.keys())}')
                 
                 # Scale the data
                 X_train = scaler.fit_transform(X_train)
